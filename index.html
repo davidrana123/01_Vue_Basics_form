@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <style>
+        .activeClass{
+            background-color:  rgb(26, 128, 0);
+            color: #fff; 
+            padding:  10px 14px;
+            outline: none;
+            cursor: pointer;
+            border: none;
+        }
+        .nonActiveClass{
+            background-color: #c51d47;
+            color: #fff; 
+            padding:  10px 14px;
+            outline: none;
+            cursor: pointer;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="application">
+
+        <div v-for="user in users">
+            <p>{{user.name}} - {{user.email}}</p>
+        </div>
+
+    <!-- useing event -->
+        <form @submit="addUser">
+            <input
+             type="text"
+              placeholder="enter name...."
+             v-model="name"
+             /><br><br>
+            <input
+             type = "email"
+              placeholder="enter email"
+            v-model="email"
+            /><br><br>
+            <input type = "submit"
+             value="Add user" 
+             v-bind:class="[status ? 'activeClass' : 'nonActiveClass']"
+            />
+        </form>
+
+
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
